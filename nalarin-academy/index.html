@@ -1,0 +1,2092 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nalarin Academy — Demo Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root {
+      --dark: #10231d;
+      --dark-2: #18372d;
+      --green: #20c997;
+      --green-dark: #10966e;
+      --mint: #dff8ef;
+      --cream: #f8f7f1;
+      --white: #ffffff;
+      --gray: #6b7772;
+      --line: #dce6e1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+
+      opacity: 0;
+      transform: translateY(8px);
+
+      transition:
+        opacity .45s ease,
+        transform .45s cubic-bezier(.22,1,.36,1);
+    }
+
+    body.page-loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    body.page-exit {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .page-transition {
+      position: fixed;
+      inset: 0;
+      background: var(--dark);
+      z-index: 99999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+
+    body.page-exit .page-transition {
+      opacity: 1;
+    }
+
+    /* DEMO BAR */
+
+    .demo-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 42px;
+      background: #0b1713;
+      color: #d8e7e1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 12px;
+
+      font-size: 13px;
+
+      z-index: 9999;
+    }
+
+    .demo-label {
+      background: var(--green);
+      color: #08251c;
+
+      padding: 5px 10px;
+
+      border-radius: 6px;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: .8px;
+    }
+
+    .back-pixelbantu {
+      position: absolute;
+      left: 22px;
+
+      color: white;
+      text-decoration: none;
+
+      font-weight: 700;
+
+      transition: .2s;
+    }
+
+    .back-pixelbantu:hover {
+      color: var(--green);
+    }
+
+    /* SIDEBAR */
+
+    .sidebar {
+      position: fixed;
+
+      top: 42px;
+      left: 0;
+      bottom: 0;
+
+      width: 235px;
+
+      background: var(--dark);
+      color: white;
+
+      padding: 30px 20px;
+
+      display: flex;
+      flex-direction: column;
+
+      z-index: 100;
+    }
+
+    .brand {
+      padding: 0 12px 35px;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.1);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+
+      background: var(--green);
+      color: var(--dark);
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 13px;
+
+      font-weight: 800;
+      font-size: 18px;
+
+      margin-bottom: 13px;
+    }
+
+    .brand h1 {
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 20px;
+
+      letter-spacing: -.6px;
+    }
+
+    .brand p {
+      color: #8fa59d;
+
+      font-size: 12px;
+
+      margin-top: 4px;
+    }
+
+    .side-title {
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      color: #6e8980;
+
+      letter-spacing: 1.5px;
+
+      font-weight: 800;
+
+      margin: 30px 12px 12px;
+    }
+
+    .side-menu {
+      display: flex;
+      flex-direction: column;
+
+      gap: 6px;
+    }
+
+    .side-menu span {
+      padding: 12px;
+
+      border-radius: 10px;
+
+      color: #9cb0aa;
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      pointer-events: none;
+    }
+
+    .side-menu span:first-child {
+      background: rgba(32,201,151,.13);
+
+      color: var(--green);
+    }
+
+    .side-bottom {
+      margin-top: auto;
+
+      background: var(--dark-2);
+
+      border-radius: 15px;
+
+      padding: 16px;
+    }
+
+    .side-bottom small {
+      color: #779088;
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+    }
+
+    .side-bottom strong {
+      display: block;
+
+      font-size: 13px;
+
+      margin-top: 7px;
+
+      line-height: 1.5;
+    }
+
+    /* MAIN */
+
+    .main {
+      margin-left: 235px;
+
+      padding-top: 42px;
+
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1250px;
+
+      margin: auto;
+
+      padding: 0 55px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 690px;
+
+      display: grid;
+
+      grid-template-columns:
+        1.05fr .95fr;
+
+      align-items: center;
+
+      gap: 50px;
+
+      padding-top: 50px;
+
+      padding-bottom: 70px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      background: var(--mint);
+
+      color: var(--green-dark);
+
+      padding: 8px 13px;
+
+      border-radius: 100px;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      margin-bottom: 24px;
+    }
+
+    .hero-label i {
+      width: 7px;
+      height: 7px;
+
+      background: var(--green);
+
+      border-radius: 50%;
+    }
+
+    .hero h2 {
+      font-family: "Plus Jakarta Sans";
+
+      font-size:
+        clamp(45px, 5vw, 76px);
+
+      line-height: 1.02;
+
+      letter-spacing: -4px;
+
+      max-width: 650px;
+    }
+
+    .hero h2 span {
+      color: var(--green);
+    }
+
+    .hero-text {
+      margin-top: 25px;
+
+      max-width: 530px;
+
+      color: var(--gray);
+
+      font-size: 17px;
+
+      line-height: 1.8;
+    }
+
+    .hero-info {
+      display: flex;
+
+      gap: 35px;
+
+      margin-top: 35px;
+    }
+
+    .hero-info strong {
+      display: block;
+
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 24px;
+    }
+
+    .hero-info span {
+      color: var(--gray);
+
+      font-size: 12px;
+    }
+
+    /* VISUAL */
+
+    .hero-visual {
+      position: relative;
+
+      min-height: 490px;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+    }
+
+    .circle {
+      width: 390px;
+      height: 390px;
+
+      background: var(--green);
+
+      border-radius: 50%;
+
+      position: absolute;
+
+      right: 25px;
+      top: 50px;
+    }
+
+    .student-card {
+      position: relative;
+
+      width: 340px;
+
+      background: white;
+
+      border-radius: 24px;
+
+      padding: 23px;
+
+      box-shadow:
+        0 25px 70px rgba(16,35,29,.18);
+
+      z-index: 2;
+
+      transform: rotate(2deg);
+    }
+
+    .student-top {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding-bottom: 18px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .avatar {
+      width: 48px;
+      height: 48px;
+
+      background: #e8f5ef;
+
+      color: var(--green-dark);
+
+      border-radius: 15px;
+
+      display: grid;
+
+      place-items: center;
+    }
+
+    .avatar svg {
+      width: 25px;
+      height: 25px;
+
+      fill: none;
+
+      stroke: currentColor;
+
+      stroke-width: 1.8;
+
+      stroke-linecap: round;
+
+      stroke-linejoin: round;
+    }
+
+    .student-top strong {
+      font-size: 14px;
+    }
+
+    .student-top span {
+      display: block;
+
+      font-size: 11px;
+
+      color: var(--gray);
+
+      margin-top: 3px;
+    }
+
+    .progress-title {
+      display: flex;
+
+      justify-content: space-between;
+
+      margin-top: 23px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+    .progress-title span {
+      color: var(--green-dark);
+    }
+
+    .progress {
+      height: 9px;
+
+      background: #e7efec;
+
+      border-radius: 20px;
+
+      margin-top: 10px;
+
+      overflow: hidden;
+    }
+
+    .progress div {
+      height: 100%;
+
+      width: 72%;
+
+      background: var(--green);
+
+      border-radius: 20px;
+    }
+
+    .lesson {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 13px 0;
+
+      border-bottom:
+        1px solid #edf1ef;
+    }
+
+    .lesson-left {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+    }
+
+    .lesson-icon {
+      width: 32px;
+      height: 32px;
+
+      background: var(--mint);
+
+      color: var(--green-dark);
+
+      border-radius: 9px;
+
+      display: grid;
+
+      place-items: center;
+    }
+
+    .lesson-icon svg {
+      width: 17px;
+      height: 17px;
+
+      fill: none;
+
+      stroke: currentColor;
+
+      stroke-width: 1.8;
+
+      stroke-linecap: round;
+
+      stroke-linejoin: round;
+    }
+
+    .lesson strong {
+      font-size: 11px;
+    }
+
+    .lesson small {
+      display: block;
+
+      color: var(--gray);
+
+      font-size: 9px;
+
+      margin-top: 2px;
+    }
+
+    .check {
+      color: var(--green);
+
+      font-size: 15px;
+
+      font-weight: bold;
+    }
+
+    .floating {
+      position: absolute;
+
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 15px 17px;
+
+      box-shadow:
+        0 15px 35px rgba(16,35,29,.15);
+
+      z-index: 4;
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+    .floating.one {
+      top: 55px;
+      left: 10px;
+
+      transform: rotate(-5deg);
+    }
+
+    .floating.two {
+      right: -5px;
+      bottom: 80px;
+
+      transform: rotate(4deg);
+    }
+
+    .floating svg {
+      width: 15px;
+      height: 15px;
+
+      vertical-align: middle;
+
+      fill: none;
+
+      stroke: var(--green-dark);
+
+      stroke-width: 1.8;
+
+      margin-right: 4px;
+    }
+
+    /* SECTION */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-head {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      margin-bottom: 45px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      font-size: 11px;
+
+      color: var(--green-dark);
+
+      font-weight: 800;
+
+      margin-bottom: 12px;
+    }
+
+    .section-head h3 {
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 38px;
+
+      letter-spacing: -1.8px;
+    }
+
+    .section-head p {
+      max-width: 390px;
+
+      color: var(--gray);
+
+      line-height: 1.7;
+
+      font-size: 14px;
+    }
+
+    /* SUBJECT */
+
+    .subjects {
+      display: grid;
+
+      grid-template-columns:
+        repeat(12,1fr);
+
+      gap: 18px;
+    }
+
+    .subject {
+      background: white;
+
+      border: 1px solid var(--line);
+
+      border-radius: 20px;
+
+      padding: 25px;
+
+      min-height: 230px;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .subject:nth-child(1) {
+      grid-column: span 7;
+    }
+
+    .subject:nth-child(2) {
+      grid-column: span 5;
+    }
+
+    .subject:nth-child(3) {
+      grid-column: span 5;
+    }
+
+    .subject:nth-child(4) {
+      grid-column: span 7;
+    }
+
+    .subject-number {
+      font-family: "Plus Jakarta Sans";
+
+      color: #c8d5d0;
+
+      font-size: 13px;
+
+      font-weight: 800;
+    }
+
+    .subject-icon {
+      width: 55px;
+      height: 55px;
+
+      background: var(--mint);
+
+      color: var(--green-dark);
+
+      border-radius: 16px;
+
+      display: grid;
+
+      place-items: center;
+
+      margin-top: 30px;
+    }
+
+    .subject-icon svg {
+      width: 27px;
+      height: 27px;
+
+      fill: none;
+
+      stroke: currentColor;
+
+      stroke-width: 1.8;
+
+      stroke-linecap: round;
+
+      stroke-linejoin: round;
+    }
+
+    .subject h4 {
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 20px;
+
+      margin-top: 17px;
+    }
+
+    .subject p {
+      color: var(--gray);
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+      margin-top: 6px;
+
+      max-width: 390px;
+    }
+
+    .subject .shape {
+      position: absolute;
+
+      width: 120px;
+      height: 120px;
+
+      border-radius: 50%;
+
+      background: #f1faf6;
+
+      right: -35px;
+      bottom: -35px;
+    }
+
+    /* DARK */
+
+    .dark-section {
+      background: var(--dark);
+
+      color: white;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .dark-section::after {
+      content: "";
+
+      width: 400px;
+      height: 400px;
+
+      border:
+        1px solid rgba(32,201,151,.15);
+
+      border-radius: 50%;
+
+      position: absolute;
+
+      right: -120px;
+      top: -150px;
+    }
+
+    .dark-section .eyebrow {
+      color: var(--green);
+    }
+
+    .dark-section h3 {
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 45px;
+
+      max-width: 650px;
+
+      line-height: 1.15;
+
+      letter-spacing: -2px;
+    }
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4,1fr);
+
+      margin-top: 65px;
+
+      border-top:
+        1px solid rgba(255,255,255,.12);
+    }
+
+    .stat {
+      padding: 35px 20px;
+
+      border-right:
+        1px solid rgba(255,255,255,.12);
+    }
+
+    .stat:last-child {
+      border: none;
+    }
+
+    .stat strong {
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 42px;
+
+      letter-spacing: -2px;
+
+      color: var(--green);
+    }
+
+    .stat span {
+      display: block;
+
+      margin-top: 7px;
+
+      color: #9aafa8;
+
+      font-size: 13px;
+    }
+
+    /* METHOD */
+
+    .method {
+      display: grid;
+
+      grid-template-columns:
+        .8fr 1.2fr;
+
+      gap: 80px;
+
+      align-items: start;
+    }
+
+    .method h3 {
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 43px;
+
+      line-height: 1.15;
+
+      letter-spacing: -2px;
+    }
+
+    .method-intro {
+      color: var(--gray);
+
+      line-height: 1.7;
+
+      margin-top: 18px;
+
+      font-size: 14px;
+    }
+
+    .steps {
+      border-top:
+        1px solid var(--line);
+    }
+
+    .step {
+      display: grid;
+
+      grid-template-columns:
+        60px 1fr 30px;
+
+      gap: 20px;
+
+      align-items: center;
+
+      padding: 25px 0;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .step-num {
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 13px;
+
+      color: var(--green-dark);
+
+      font-weight: 800;
+    }
+
+    .step h4 {
+      font-size: 16px;
+    }
+
+    .step p {
+      color: var(--gray);
+
+      font-size: 12px;
+
+      margin-top: 5px;
+
+      line-height: 1.6;
+    }
+
+    .step-arrow {
+      color: #a8b7b2;
+
+      font-size: 20px;
+    }
+
+    /* CTA */
+
+    .cta {
+      background: var(--green);
+
+      border-radius: 30px;
+
+      padding: 65px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 40px;
+
+      margin: 80px 0;
+    }
+
+    .cta h3 {
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 42px;
+
+      letter-spacing: -2px;
+
+      max-width: 620px;
+    }
+
+    .cta p {
+      margin-top: 10px;
+
+      max-width: 530px;
+
+      color: #185442;
+
+      line-height: 1.6;
+    }
+
+    .cta-button {
+      background: var(--dark);
+
+      color: white;
+
+      padding: 16px 23px;
+
+      border-radius: 12px;
+
+      white-space: nowrap;
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      pointer-events: none;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0b1713;
+
+      color: white;
+
+      padding: 55px 0;
+    }
+
+    .footer-content {
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .footer-brand strong {
+      font-family: "Plus Jakarta Sans";
+
+      font-size: 20px;
+    }
+
+    .footer-brand p {
+      color: #789088;
+
+      font-size: 12px;
+
+      margin-top: 8px;
+    }
+
+    .footer-back {
+      color: var(--green);
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      pointer-events: auto;
+
+      cursor: pointer;
+    }
+
+    .footer-copy {
+      color: #61766e;
+
+      font-size: 11px;
+
+      margin-top: 40px;
+
+      padding-top: 20px;
+
+      border-top:
+        1px solid rgba(255,255,255,.08);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1000px) {
+
+      .sidebar {
+        width: 190px;
+      }
+
+      .main {
+        margin-left: 190px;
+      }
+
+      .container {
+        padding: 0 30px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .method {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+      }
+    }
+
+    @media(max-width:760px) {
+
+      .demo-bar {
+        justify-content: flex-end;
+
+        padding-right: 15px;
+
+        font-size: 10px;
+      }
+
+      .back-pixelbantu {
+        left: 10px;
+
+        font-size: 10px;
+      }
+
+      .sidebar {
+        position: relative;
+
+        top: 42px;
+
+        width: 100%;
+
+        height: auto;
+
+        padding: 15px;
+      }
+
+      .brand {
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        padding: 0 5px 15px;
+      }
+
+      .brand-mark {
+        margin: 0;
+      }
+
+      .side-title,
+      .side-bottom {
+        display: none;
+      }
+
+      .side-menu {
+        flex-direction: row;
+
+        overflow: hidden;
+
+        margin-top: 12px;
+      }
+
+      .side-menu span {
+        white-space: nowrap;
+
+        padding: 8px 10px;
+
+        font-size: 11px;
+      }
+
+      .main {
+        margin-left: 0;
+
+        padding-top: 42px;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .hero {
+        padding-top: 70px;
+
+        min-height: auto;
+      }
+
+      .hero h2 {
+        font-size: 48px;
+
+        letter-spacing: -2.5px;
+      }
+
+      .hero-text {
+        font-size: 14px;
+      }
+
+      .circle {
+        width: 290px;
+        height: 290px;
+
+        right: 10px;
+      }
+
+      .student-card {
+        width: 290px;
+      }
+
+      .floating.one {
+        left: -5px;
+      }
+
+      .floating.two {
+        right: -5px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 15px;
+      }
+
+      .subjects {
+        display: grid;
+
+        grid-template-columns: 1fr;
+      }
+
+      .subject:nth-child(1),
+      .subject:nth-child(2),
+      .subject:nth-child(3),
+      .subject:nth-child(4) {
+        grid-column: span 1;
+      }
+
+      .stats {
+        grid-template-columns:
+          repeat(2,1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .stat:nth-child(3),
+      .stat:nth-child(4) {
+        border-top:
+          1px solid rgba(255,255,255,.12);
+      }
+
+      .cta {
+        padding: 35px 25px;
+
+        display: block;
+      }
+
+      .cta h3 {
+        font-size: 32px;
+      }
+
+      .cta-button {
+        display: inline-block;
+
+        margin-top: 25px;
+      }
+
+      .footer-content {
+        display: block;
+      }
+
+      .footer-back {
+        display: inline-block;
+
+        margin-top: 20px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="page-transition"></div>
+
+
+  <!-- DEMO BAR -->
+
+  <div class="demo-bar">
+
+    <a href="../index.html" class="back-pixelbantu">
+      ← Kembali ke PixelBantu
+    </a>
+
+    <span class="demo-label">
+      DEMO
+    </span>
+
+    Website Concept — Preview Only
+
+  </div>
+
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+
+      <div class="brand-mark">
+        N
+      </div>
+
+      <div>
+        <h1>Nalarin</h1>
+
+        <p>
+          Learning Academy
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="side-title">
+      Explore
+    </div>
+
+
+    <div class="side-menu">
+
+      <span>
+        Overview
+      </span>
+
+      <span>
+        Program
+      </span>
+
+      <span>
+        Materi
+      </span>
+
+      <span>
+        Tentang
+      </span>
+
+    </div>
+
+
+    <div class="side-bottom">
+
+      <small>
+        Preview Mode
+      </small>
+
+      <strong>
+        Website ini dibuat sebagai konsep desain
+        untuk portofolio PixelBantu.
+      </strong>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+
+    <!-- HERO -->
+
+    <div class="container">
+
+      <section class="hero">
+
+        <div class="hero-content">
+
+          <div class="hero-label">
+            <i></i>
+            Belajar dengan cara berbeda
+          </div>
+
+
+          <h2>
+            Bikin belajar jadi
+            <span>lebih masuk akal.</span>
+          </h2>
+
+
+          <p class="hero-text">
+            Nalarin membantu siswa memahami pelajaran
+            melalui konsep sederhana, latihan terarah,
+            dan pengalaman belajar yang menyenangkan.
+          </p>
+
+
+          <div class="hero-info">
+
+            <div>
+              <strong>12+</strong>
+              <span>Materi belajar</span>
+            </div>
+
+            <div>
+              <strong>4</strong>
+              <span>Program utama</span>
+            </div>
+
+            <div>
+              <strong>1:1</strong>
+              <span>Fokus siswa</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-visual">
+
+          <div class="circle"></div>
+
+
+          <div class="floating one">
+
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3a7 7 0 0 0-4 12.74V19h8v-3.26A7 7 0 0 0 12 3z"/>
+              <path d="M9 22h6"/>
+            </svg>
+
+            Paham konsep
+
+          </div>
+
+
+          <div class="floating two">
+
+            <svg viewBox="0 0 24 24">
+              <path d="m12 3 2.8 5.7L21 9.6l-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/>
+            </svg>
+
+            Progress meningkat
+
+          </div>
+
+
+          <div class="student-card">
+
+            <div class="student-top">
+
+              <div class="avatar">
+
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="8" r="3"/>
+                  <path d="M5 21a7 7 0 0 1 14 0"/>
+                </svg>
+
+              </div>
+
+
+              <div>
+
+                <strong>
+                  Dashboard Belajar
+                </strong>
+
+                <span>
+                  Selamat datang kembali!
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="progress-title">
+
+              <span>
+                Progress minggu ini
+              </span>
+
+              <span>
+                72%
+              </span>
+
+            </div>
+
+
+            <div class="progress">
+              <div></div>
+            </div>
+
+
+            <div style="margin-top:20px;">
+
+
+              <div class="lesson">
+
+                <div class="lesson-left">
+
+                  <div class="lesson-icon">
+
+                    <svg viewBox="0 0 24 24">
+                      <path d="M5 19 19 5"/>
+                      <path d="M7 7h.01"/>
+                      <path d="M17 17h.01"/>
+                      <path d="M5 5h4"/>
+                      <path d="M15 19h4"/>
+                    </svg>
+
+                  </div>
+
+
+                  <div>
+
+                    <strong>
+                      Matematika
+                    </strong>
+
+                    <small>
+                      Persamaan Linear
+                    </small>
+
+                  </div>
+
+                </div>
+
+                <div class="check">
+                  ✓
+                </div>
+
+              </div>
+
+
+              <div class="lesson">
+
+                <div class="lesson-left">
+
+                  <div class="lesson-icon">
+
+                    <svg viewBox="0 0 24 24">
+                      <path d="M9 3v5"/>
+                      <path d="M15 3v5"/>
+                      <path d="M8 8h8l2 11H6z"/>
+                      <path d="M10 12h4"/>
+                    </svg>
+
+                  </div>
+
+
+                  <div>
+
+                    <strong>
+                      IPA
+                    </strong>
+
+                    <small>
+                      Sistem Tata Surya
+                    </small>
+
+                  </div>
+
+                </div>
+
+                <div class="check">
+                  ✓
+                </div>
+
+              </div>
+
+
+              <div class="lesson">
+
+                <div class="lesson-left">
+
+                  <div class="lesson-icon">
+
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4 5h16v11H8l-4 4z"/>
+                      <path d="M8 9h8"/>
+                      <path d="M8 12h5"/>
+                    </svg>
+
+                  </div>
+
+
+                  <div>
+
+                    <strong>
+                      English
+                    </strong>
+
+                    <small>
+                      Daily Conversation
+                    </small>
+
+                  </div>
+
+                </div>
+
+                <div class="check">
+                  →
+                </div>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROGRAM -->
+
+      <section>
+
+        <div class="section-head">
+
+          <div>
+
+            <div class="eyebrow">
+              Program belajar
+            </div>
+
+            <h3>
+              Pilih jalur belajarmu.
+            </h3>
+
+          </div>
+
+
+          <p>
+            Program dirancang berdasarkan kebutuhan
+            dan tingkat belajar siswa agar prosesnya
+            lebih terarah.
+          </p>
+
+        </div>
+
+
+        <div class="subjects">
+
+
+          <div class="subject">
+
+            <span class="subject-number">
+              01
+            </span>
+
+
+            <div class="subject-icon">
+
+              <svg viewBox="0 0 24 24">
+                <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/>
+                <path d="M4 5.5v16"/>
+                <path d="M8 7h8"/>
+                <path d="M8 11h7"/>
+              </svg>
+
+            </div>
+
+
+            <h4>
+              Nalarin SD
+            </h4>
+
+            <p>
+              Membantu siswa membangun dasar matematika,
+              IPA, dan kemampuan belajar sejak dini.
+            </p>
+
+            <div class="shape"></div>
+
+          </div>
+
+
+          <div class="subject">
+
+            <span class="subject-number">
+              02
+            </span>
+
+
+            <div class="subject-icon">
+
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8"/>
+                <path d="M8 12h8"/>
+                <path d="M12 8v8"/>
+              </svg>
+
+            </div>
+
+
+            <h4>
+              Nalarin SMP
+            </h4>
+
+            <p>
+              Pendampingan materi SMP dengan latihan
+              dan pembahasan yang lebih terstruktur.
+            </p>
+
+            <div class="shape"></div>
+
+          </div>
+
+
+          <div class="subject">
+
+            <span class="subject-number">
+              03
+            </span>
+
+
+            <div class="subject-icon">
+
+              <svg viewBox="0 0 24 24">
+                <path d="M4 5h16v11H8l-4 4z"/>
+                <path d="M8 9h8"/>
+                <path d="M8 12h5"/>
+              </svg>
+
+            </div>
+
+
+            <h4>
+              English Club
+            </h4>
+
+            <p>
+              Belajar bahasa Inggris melalui vocabulary,
+              conversation, dan aktivitas sederhana.
+            </p>
+
+            <div class="shape"></div>
+
+          </div>
+
+
+          <div class="subject">
+
+            <span class="subject-number">
+              04
+            </span>
+
+
+            <div class="subject-icon">
+
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8"/>
+                <path d="m12 8 1.5 3 3 .5-2.2 2.2.5 3.3-2.8-1.5-2.8 1.5.5-3.3-2.2-2.2 3-.5z"/>
+              </svg>
+
+            </div>
+
+
+            <h4>
+              Study Skills
+            </h4>
+
+            <p>
+              Belajar mengatur waktu, memahami materi,
+              dan membangun kebiasaan belajar yang lebih baik.
+            </p>
+
+            <div class="shape"></div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- STAT -->
+
+    <section class="dark-section">
+
+      <div class="container">
+
+        <div class="eyebrow">
+          Nalarin dalam angka
+        </div>
+
+
+        <h3>
+          Bukan sekadar menghafal.
+          Kami ingin siswa benar-benar memahami.
+        </h3>
+
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>12+</strong>
+            <span>Materi pembelajaran</span>
+          </div>
+
+          <div class="stat">
+            <strong>4</strong>
+            <span>Program belajar</span>
+          </div>
+
+          <div class="stat">
+            <strong>3</strong>
+            <span>Metode utama</span>
+          </div>
+
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Fokus pada pemahaman</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- METHOD -->
+
+    <div class="container">
+
+      <section>
+
+        <div class="method">
+
+
+          <div>
+
+            <div class="eyebrow">
+              Cara belajar
+            </div>
+
+
+            <h3>
+              Belajar dengan alur yang jelas.
+            </h3>
+
+
+            <p class="method-intro">
+              Setiap sesi dibuat supaya siswa tidak hanya
+              menerima materi, tetapi juga memahami
+              bagaimana cara berpikirnya.
+            </p>
+
+          </div>
+
+
+          <div class="steps">
+
+
+            <div class="step">
+
+              <div class="step-num">
+                01
+              </div>
+
+              <div>
+                <h4>
+                  Kenali kebutuhan
+                </h4>
+
+                <p>
+                  Memahami materi dan bagian yang masih sulit.
+                </p>
+              </div>
+
+              <div class="step-arrow">
+                →
+              </div>
+
+            </div>
+
+
+            <div class="step">
+
+              <div class="step-num">
+                02
+              </div>
+
+              <div>
+                <h4>
+                  Pahami konsep
+                </h4>
+
+                <p>
+                  Materi dijelaskan dengan bahasa yang lebih sederhana.
+                </p>
+              </div>
+
+              <div class="step-arrow">
+                →
+              </div>
+
+            </div>
+
+
+            <div class="step">
+
+              <div class="step-num">
+                03
+              </div>
+
+              <div>
+                <h4>
+                  Latihan
+                </h4>
+
+                <p>
+                  Mencoba soal dan menerapkan konsep yang sudah dipelajari.
+                </p>
+              </div>
+
+              <div class="step-arrow">
+                →
+              </div>
+
+            </div>
+
+
+            <div class="step">
+
+              <div class="step-num">
+                04
+              </div>
+
+              <div>
+                <h4>
+                  Evaluasi
+                </h4>
+
+                <p>
+                  Melihat perkembangan dan menentukan materi berikutnya.
+                </p>
+              </div>
+
+              <div class="step-arrow">
+                ✓
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <!-- CTA -->
+
+        <div class="cta">
+
+          <div>
+
+            <h3>
+              Siap membuat belajar terasa lebih mudah?
+            </h3>
+
+            <p>
+              Nalarin hadir untuk membantu siswa belajar
+              dengan pendekatan yang lebih sederhana dan terarah.
+            </p>
+
+          </div>
+
+
+          <div class="cta-button">
+            Konsultasi Sekarang →
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      <div class="container">
+
+        <div class="footer-content">
+
+          <div class="footer-brand">
+
+            <strong>
+              Nalarin Academy
+            </strong>
+
+            <p>
+              Learning made easier.
+            </p>
+
+          </div>
+
+
+          <a href="../index.html" class="footer-back">
+            ← Kembali ke PixelBantu
+          </a>
+
+        </div>
+
+
+        <div class="footer-copy">
+          © 2026 Nalarin Academy —
+          Website Concept / Demo Portfolio
+        </div>
+
+      </div>
+
+    </footer>
+
+  </main>
+
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      requestAnimationFrame(() => {
+        document.body.classList.add("page-loaded");
+      });
+
+
+      document.querySelectorAll("a").forEach(link => {
+
+        const href = link.getAttribute("href");
+
+        if (!href) return;
+
+        if (
+          href.startsWith("#") ||
+          href.startsWith("mailto:") ||
+          href.startsWith("tel:") ||
+          href.startsWith("http")
+        ) return;
+
+
+        link.addEventListener("click", function(e) {
+
+          e.preventDefault();
+
+          const destination = this.href;
+
+          document.body.classList.remove("page-loaded");
+
+          document.body.classList.add("page-exit");
+
+
+          setTimeout(() => {
+
+            window.location.href = destination;
+
+          }, 450);
+
+        });
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>

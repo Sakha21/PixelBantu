@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kopi Senja — Demo Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root {
+      --espresso: #241710;
+      --coffee: #513528;
+      --brown: #795548;
+      --caramel: #b97845;
+      --cream: #f5eee4;
+      --cream-2: #ebe0d2;
+      --paper: #fffaf3;
+      --muted: #82766c;
+      --line: #dfd2c3;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--paper);
+      color: var(--espresso);
+
+      opacity: 0;
+      transform: translateY(12px);
+
+      transition:
+        opacity .45s ease,
+        transform .45s cubic-bezier(.22,1,.36,1);
+    }
+
+    body.page-loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    body.page-exit {
+      opacity: 0;
+      transform: translateY(-12px);
+    }
+
+    .page-transition {
+      position: fixed;
+      inset: 0;
+
+      background: var(--espresso);
+
+      z-index: 99999;
+
+      pointer-events: none;
+
+      opacity: 0;
+
+      transition: opacity .45s ease;
+    }
+
+    body.page-exit .page-transition {
+      opacity: 1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 44px));
+      margin: auto;
+    }
+
+
+    /* =========================
+       DEMO BAR
+    ========================= */
+
+    .demo-bar {
+      height: 42px;
+
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 9999;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 12px;
+
+      background: #160d08;
+
+      color: #d9cec5;
+
+      font-size: 12px;
+    }
+
+    .demo-label {
+      background: var(--caramel);
+
+      color: white;
+
+      padding: 5px 10px;
+
+      border-radius: 5px;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      letter-spacing: 1px;
+    }
+
+    .back-pixelbantu {
+      position: absolute;
+
+      left: 22px;
+
+      color: white;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      transition: .2s;
+    }
+
+    .back-pixelbantu:hover {
+      color: #d6a77d;
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      position: sticky;
+
+      top: 42px;
+
+      height: 82px;
+
+      z-index: 1000;
+
+      background:
+        rgba(255,250,243,.94);
+
+      backdrop-filter: blur(15px);
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 100%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+    }
+
+    .logo-symbol {
+      width: 39px;
+      height: 39px;
+
+      border-radius: 50%;
+
+      background: var(--espresso);
+
+      display: grid;
+
+      place-items: center;
+    }
+
+    .logo-symbol svg {
+      width: 21px;
+      height: 21px;
+
+      fill: none;
+
+      stroke: #f3d4b5;
+
+      stroke-width: 1.7;
+
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .logo-text {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 20px;
+
+      font-weight: 700;
+    }
+
+    .logo-text span {
+      display: block;
+
+      font-family: "DM Sans";
+
+      font-size: 8px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+
+      align-items: center;
+
+      gap: 30px;
+
+      font-size: 12px;
+
+      font-weight: 600;
+
+      color: #62564e;
+    }
+
+    /*
+      MENU NAVBAR TIDAK AKTIF
+    */
+
+    .nav-links span {
+      pointer-events: none;
+    }
+
+    .nav-cta {
+      border:
+        1px solid var(--espresso);
+
+      padding: 10px 16px;
+
+      border-radius: 4px;
+
+      color: var(--espresso);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      padding: 55px 0 90px;
+    }
+
+    .hero-layout {
+      display: grid;
+
+      grid-template-columns:
+        1.15fr .85fr;
+
+      min-height: 650px;
+    }
+
+    .hero-left {
+      padding:
+        60px 30px 60px 10px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+    .eyebrow {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      color: var(--caramel);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 34px;
+      height: 1px;
+
+      background:
+        var(--caramel);
+    }
+
+    .hero h1 {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size:
+        clamp(58px,7vw,94px);
+
+      line-height: .94;
+
+      letter-spacing: -4px;
+
+      font-weight: 600;
+
+      max-width: 720px;
+
+      margin-top: 25px;
+    }
+
+    .hero h1 em {
+      display: block;
+
+      color: var(--caramel);
+
+      font-style: italic;
+
+      margin-left: 55px;
+    }
+
+    .hero-description {
+      max-width: 500px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.85;
+
+      margin-top: 28px;
+    }
+
+    .hero-bottom {
+      display: flex;
+
+      align-items: end;
+
+      justify-content: space-between;
+
+      max-width: 590px;
+
+      margin-top: 38px;
+
+      padding-top: 20px;
+
+      border-top:
+        1px solid var(--line);
+    }
+
+    .opening strong {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 22px;
+    }
+
+    .opening span {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      margin-top: 3px;
+    }
+
+    .hero-note {
+      color: var(--muted);
+
+      font-size: 10px;
+
+      line-height: 1.6;
+
+      max-width: 190px;
+    }
+
+
+    /* =========================
+       HERO VISUAL
+    ========================= */
+
+    .hero-right {
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+    }
+
+    .poster {
+      width: min(390px,100%);
+
+      height: 535px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        #d3b395;
+
+      transform:
+        rotate(2.5deg);
+
+      box-shadow:
+        20px 30px 60px
+        rgba(40,20,10,.16);
+    }
+
+    .poster::before {
+      content: "";
+
+      position: absolute;
+
+      width: 360px;
+      height: 360px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(255,255,255,.45);
+
+      left: 50%;
+      top: 44%;
+
+      transform:
+        translate(-50%,-50%);
+    }
+
+    .poster::after {
+      content: "";
+
+      position: absolute;
+
+      width: 250px;
+      height: 250px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(255,255,255,.3);
+
+      left: 50%;
+      top: 44%;
+
+      transform:
+        translate(-50%,-50%);
+    }
+
+    .poster-title {
+      position: absolute;
+
+      top: 28px;
+      left: 28px;
+      right: 28px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      color: white;
+
+      font-size: 9px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1.8px;
+
+      font-weight: 700;
+    }
+
+    .saucer {
+      position: absolute;
+
+      width: 245px;
+      height: 245px;
+
+      border-radius: 50%;
+
+      left: 50%;
+      top: 45%;
+
+      transform:
+        translate(-50%,-50%);
+
+      background:
+        #ae784e;
+
+      box-shadow:
+        0 30px 50px
+        rgba(40,20,10,.25);
+    }
+
+    .cup {
+      position: absolute;
+
+      width: 150px;
+      height: 110px;
+
+      left: 50%;
+      top: 46%;
+
+      transform:
+        translate(-50%,-50%)
+        rotate(-4deg);
+
+      background:
+        linear-gradient(
+          #fffdf9,
+          #d6c5b3
+        );
+
+      border-radius:
+        12px 12px 55px 55px;
+
+      box-shadow:
+        0 18px 30px
+        rgba(45,25,15,.22);
+    }
+
+    .cup::before {
+      content: "";
+
+      position: absolute;
+
+      width: 140px;
+      height: 42px;
+
+      left: 5px;
+      top: -17px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          ellipse,
+          #432417 0 44%,
+          #865438 45% 61%,
+          #eee0d2 62%
+        );
+    }
+
+    .cup::after {
+      content: "";
+
+      position: absolute;
+
+      width: 43px;
+      height: 48px;
+
+      right: -35px;
+      top: 17px;
+
+      border:
+        10px solid #d6c5b3;
+
+      border-left: none;
+
+      border-radius:
+        0 30px 30px 0;
+    }
+
+    .poster-word {
+      position: absolute;
+
+      left: 28px;
+      bottom: 28px;
+
+      color: white;
+
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 47px;
+
+      line-height: .9;
+
+      letter-spacing: -2px;
+    }
+
+    .poster-stamp {
+      position: absolute;
+
+      right: 24px;
+      bottom: 28px;
+
+      width: 55px;
+      height: 55px;
+
+      border:
+        1px solid rgba(255,255,255,.65);
+
+      border-radius: 50%;
+
+      display: grid;
+
+      place-items: center;
+
+      color: white;
+
+      font-size: 8px;
+
+      text-align: center;
+
+      line-height: 1.3;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+    }
+
+
+    /* =========================
+       STORY
+    ========================= */
+
+    .story {
+      padding: 110px 0;
+
+      background:
+        var(--cream);
+    }
+
+    .story-grid {
+      display: grid;
+
+      grid-template-columns:
+        190px 1fr 260px;
+
+      gap: 55px;
+
+      align-items: start;
+    }
+
+    .section-label {
+      color: var(--caramel);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      font-weight: 800;
+    }
+
+    .story-main h2 {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 52px;
+
+      line-height: 1.04;
+
+      letter-spacing: -2px;
+
+      max-width: 570px;
+    }
+
+    .story-main p {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.9;
+
+      max-width: 570px;
+
+      margin-top: 25px;
+    }
+
+    .story-side {
+      border-left:
+        1px solid var(--line);
+
+      padding-left: 25px;
+    }
+
+    .side-stat {
+      margin-bottom: 27px;
+    }
+
+    .side-stat strong {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 30px;
+    }
+
+    .side-stat span {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      margin-top: 2px;
+    }
+
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu {
+      padding: 110px 0;
+    }
+
+    .menu-top {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      margin-bottom: 45px;
+    }
+
+    .menu-top h2 {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 55px;
+
+      letter-spacing: -2px;
+    }
+
+    .menu-top p {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.7;
+
+      max-width: 280px;
+    }
+
+    .menu-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap: 16px;
+    }
+
+    .menu-card {
+      min-height: 275px;
+
+      padding: 26px;
+
+      position: relative;
+
+      border:
+        1px solid var(--line);
+
+      background:
+        white;
+    }
+
+    .menu-card:nth-child(2) {
+      background:
+        var(--espresso);
+
+      color: white;
+
+      transform:
+        translateY(25px);
+    }
+
+    .menu-card:nth-child(3) {
+      background:
+        #e9d8c5;
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+
+      border-radius: 50%;
+
+      background:
+        var(--cream);
+
+      display: grid;
+
+      place-items: center;
+    }
+
+    .card-icon svg {
+      width: 25px;
+      height: 25px;
+
+      fill: none;
+
+      stroke: var(--coffee);
+
+      stroke-width: 1.5;
+
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .menu-card h3 {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 25px;
+
+      margin-top: 42px;
+    }
+
+    .menu-card p {
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.6;
+
+      margin-top: 7px;
+
+      max-width: 200px;
+    }
+
+    .menu-card:nth-child(2) p {
+      color: #b8a9a0;
+    }
+
+    .price {
+      position: absolute;
+
+      right: 25px;
+      bottom: 25px;
+
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 19px;
+
+      color: var(--coffee);
+    }
+
+    .menu-card:nth-child(2) .price {
+      color: #e0b58d;
+    }
+
+
+    /* =========================
+       ATMOSPHERE
+    ========================= */
+
+    .space {
+      padding: 115px 0;
+
+      background:
+        var(--espresso);
+
+      color: white;
+    }
+
+    .space-head {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: end;
+
+      margin-bottom: 50px;
+    }
+
+    .space-head h2 {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 54px;
+
+      line-height: 1;
+
+      letter-spacing: -2px;
+    }
+
+    .space-head p {
+      color: #aa9a91;
+
+      max-width: 320px;
+
+      font-size: 12px;
+
+      line-height: 1.7;
+    }
+
+    .space-layout {
+      display: grid;
+
+      grid-template-columns:
+        1.35fr .65fr;
+
+      gap: 16px;
+    }
+
+    .space-main {
+      min-height: 500px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 38px;
+
+      display: flex;
+
+      align-items: end;
+
+      background:
+        linear-gradient(
+          135deg,
+          #7e604c,
+          #39231a
+        );
+    }
+
+    .space-main::before {
+      content: "";
+
+      position: absolute;
+
+      width: 420px;
+      height: 420px;
+
+      border:
+        1px solid rgba(255,255,255,.18);
+
+      border-radius: 50%;
+
+      left: 50%;
+      top: 45%;
+
+      transform:
+        translate(-50%,-50%);
+    }
+
+    .table {
+      position: absolute;
+
+      width: 280px;
+      height: 150px;
+
+      border-radius: 50%;
+
+      background:
+        #b07b50;
+
+      left: 50%;
+      top: 45%;
+
+      transform:
+        translate(-50%,-50%);
+
+      box-shadow:
+        0 30px 45px
+        rgba(0,0,0,.3);
+    }
+
+    .table::before {
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+      height: 120px;
+
+      border-radius: 50%;
+
+      background:
+        #f5eee5;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%,-50%);
+    }
+
+    .space-copy {
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .space-copy small {
+      color: #dcb28e;
+
+      font-size: 9px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+    }
+
+    .space-copy h3 {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 32px;
+
+      margin-top: 10px;
+    }
+
+    .space-copy p {
+      color: #d4c7bf;
+
+      font-size: 11px;
+
+      line-height: 1.7;
+
+      margin-top: 8px;
+
+      max-width: 390px;
+    }
+
+    .space-side {
+      display: grid;
+
+      gap: 16px;
+    }
+
+    .side-card {
+      min-height: 242px;
+
+      padding: 30px;
+
+      background:
+        #342119;
+
+      border:
+        1px solid rgba(255,255,255,.08);
+    }
+
+    .side-card:nth-child(2) {
+      background:
+        #f0e3d5;
+
+      color: var(--espresso);
+    }
+
+    .side-card .num {
+      color: #c99669;
+
+      font-size: 9px;
+
+      letter-spacing: 1.5px;
+
+      font-weight: 800;
+    }
+
+    .side-card:nth-child(2) .num {
+      color: var(--caramel);
+    }
+
+    .side-card h3 {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 25px;
+
+      margin-top: 55px;
+    }
+
+    .side-card p {
+      color: #aa9a91;
+
+      font-size: 10px;
+
+      line-height: 1.7;
+
+      margin-top: 8px;
+    }
+
+    .side-card:nth-child(2) p {
+      color: var(--muted);
+    }
+
+
+    /* =========================
+       QUOTE
+    ========================= */
+
+    .quote {
+      padding: 105px 0;
+
+      text-align: center;
+    }
+
+    .quote-line {
+      width: 55px;
+      height: 1px;
+
+      background:
+        var(--caramel);
+
+      margin:
+        0 auto 25px;
+    }
+
+    .quote h2 {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size:
+        clamp(35px,4.6vw,58px);
+
+      line-height: 1.13;
+
+      letter-spacing: -2px;
+
+      max-width: 820px;
+
+      margin: auto;
+    }
+
+    .quote p {
+      color: var(--muted);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      margin-top: 25px;
+    }
+
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta-section {
+      padding:
+        0 0 100px;
+    }
+
+    .cta {
+      background:
+        var(--cream-2);
+
+      padding:
+        60px 65px;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 40px;
+    }
+
+    .cta-label {
+      color: var(--coffee);
+
+      font-size: 10px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+
+      font-weight: 800;
+    }
+
+    .cta h2 {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 43px;
+
+      line-height: 1.05;
+
+      letter-spacing: -1.5px;
+
+      margin-top: 10px;
+
+      max-width: 650px;
+    }
+
+    .cta p {
+      color: var(--muted);
+
+      font-size: 11px;
+
+      margin-top: 10px;
+    }
+
+    .cta-button {
+      background:
+        var(--espresso);
+
+      color: white;
+
+      padding:
+        15px 21px;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+      border-radius: 3px;
+
+      pointer-events: none;
+
+      white-space: nowrap;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background:
+        #160d08;
+
+      color: white;
+
+      padding:
+        55px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 22px;
+    }
+
+    .footer-brand span {
+      display: block;
+
+      font-family: "DM Sans";
+
+      font-size: 10px;
+
+      color: #88766b;
+
+      margin-top: 5px;
+    }
+
+    .footer-back {
+      color: #d8a879;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    .footer-copy {
+      border-top:
+        1px solid rgba(255,255,255,.08);
+
+      margin-top: 40px;
+
+      padding-top: 20px;
+
+      color: #66554c;
+
+      font-size: 10px;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media(max-width:900px) {
+
+      .hero-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        margin-top: 30px;
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+      }
+
+      .story-side {
+        border-left: none;
+
+        border-top:
+          1px solid var(--line);
+
+        padding:
+          25px 0 0;
+
+        display: flex;
+
+        gap: 40px;
+      }
+
+      .menu-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .menu-card:nth-child(2) {
+        transform: none;
+      }
+
+      .space-layout {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media(max-width:650px) {
+
+      .container {
+        width:
+          min(100% - 30px,1160px);
+      }
+
+      .demo-bar {
+        justify-content:
+          flex-end;
+
+        padding-right: 10px;
+
+        font-size: 9px;
+      }
+
+      .back-pixelbantu {
+        left: 9px;
+
+        font-size: 9px;
+      }
+
+      .navbar {
+        height: 70px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 25px;
+      }
+
+      .hero-left {
+        padding:
+          50px 0;
+      }
+
+      .hero h1 {
+        font-size: 57px;
+
+        letter-spacing: -3px;
+      }
+
+      .hero h1 em {
+        margin-left: 30px;
+      }
+
+      .poster {
+        width: 310px;
+
+        height: 430px;
+      }
+
+      .poster-word {
+        font-size: 38px;
+      }
+
+      .story,
+      .menu,
+      .space {
+        padding:
+          80px 0;
+      }
+
+      .story-main h2 {
+        font-size: 40px;
+      }
+
+      .story-side {
+        display: grid;
+
+        grid-template-columns:
+          1fr 1fr;
+
+        gap: 15px;
+      }
+
+      .menu-top,
+      .space-head {
+        display: block;
+      }
+
+      .menu-top h2,
+      .space-head h2 {
+        font-size: 43px;
+      }
+
+      .menu-top p,
+      .space-head p {
+        margin-top: 15px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-card {
+        min-height: 245px;
+      }
+
+      .space-side {
+        grid-template-columns: 1fr;
+      }
+
+      .space-main {
+        min-height: 460px;
+      }
+
+      .cta {
+        padding:
+          40px 25px;
+
+        display: block;
+      }
+
+      .cta h2 {
+        font-size: 35px;
+      }
+
+      .cta-button {
+        display: inline-block;
+
+        margin-top: 25px;
+      }
+
+      .footer-inner {
+        display: block;
+      }
+
+      .footer-back {
+        display: inline-block;
+
+        margin-top: 20px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="page-transition"></div>
+
+
+  <!-- =========================
+       DEMO BAR
+  ========================= -->
+
+  <div class="demo-bar">
+
+    <!-- AKTIF: KEMBALI KE PIXELBANTU -->
+
+    <a
+      href="../index.html"
+      class="back-pixelbantu"
+    >
+      ← Kembali ke PixelBantu
+    </a>
+
+    <span class="demo-label">
+      DEMO
+    </span>
+
+    Website Concept — Preview Only
+
+  </div>
+
+
+  <!-- =========================
+       NAVBAR
+  ========================= -->
+
+  <nav class="navbar">
+
+    <div class="container nav-inner">
+
+      <div class="logo">
+
+        <div class="logo-symbol">
+
+          <svg viewBox="0 0 24 24">
+
+            <path
+              d="M7 8h10v7a5 5 0 0 1-10 0z"
+            />
+
+            <path
+              d="M17 10h1a2 2 0 0 1 0 4h-1"
+            />
+
+            <path
+              d="M9 4c0 2 2 2 2 4"
+            />
+
+            <path
+              d="M13 4c0 2 2 2 2 4"
+            />
+
+          </svg>
+
+        </div>
+
+        <div class="logo-text">
+
+          Kopi Senja
+
+          <span>
+            Coffee & Slow Living
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- SEMUA MENU INI TIDAK AKTIF -->
+
+      <div class="nav-links">
+
+        <span>Beranda</span>
+
+        <span>Cerita</span>
+
+        <span>Menu</span>
+
+        <span>Suasana</span>
+
+        <span class="nav-cta">
+          Reservasi
+        </span>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <header class="hero">
+
+    <div class="container hero-layout">
+
+      <div class="hero-left">
+
+        <div class="eyebrow">
+          Coffee House · Kota Wisata
+        </div>
+
+        <h1>
+
+          Tempat kecil
+
+          <br>
+
+          untuk
+
+          <em>
+            sore yang tenang.
+          </em>
+
+        </h1>
+
+        <p class="hero-description">
+
+          Kopi Senja hadir untuk kamu yang ingin
+          menikmati kopi tanpa terburu-buru —
+          ngobrol, membaca, bekerja, atau sekadar
+          menikmati jeda.
+
+        </p>
+
+        <div class="hero-bottom">
+
+          <div class="opening">
+
+            <strong>
+              08.00 — 22.00
+            </strong>
+
+            <span>
+              Buka setiap hari
+            </span>
+
+          </div>
+
+          <div class="hero-note">
+
+            Roasted with care.
+
+            <br>
+
+            Served with time.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-right">
+
+        <div class="poster">
+
+          <div class="poster-title">
+
+            <span>
+              Kopi Senja
+            </span>
+
+            <span>
+              01 / 2026
+            </span>
+
+          </div>
+
+
+          <div class="saucer"></div>
+
+
+          <div class="cup"></div>
+
+
+          <div class="poster-word">
+
+            slow
+
+            <br>
+
+            down.
+
+          </div>
+
+
+          <div class="poster-stamp">
+
+            coffee
+
+            <br>
+
+            daily
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       STORY
+  ========================= -->
+
+  <section class="story">
+
+    <div class="container story-grid">
+
+      <div class="section-label">
+        01 — Cerita
+      </div>
+
+
+      <div class="story-main">
+
+        <h2>
+          Kopi yang enak punya cerita di baliknya.
+        </h2>
+
+        <p>
+
+          Kami percaya pengalaman minum kopi
+          bukan hanya tentang apa yang ada di
+          dalam cangkir. Suasana, musik,
+          percakapan, dan waktu ikut membuat
+          sebuah sore terasa lengkap.
+
+        </p>
+
+      </div>
+
+
+      <div class="story-side">
+
+        <div class="side-stat">
+
+          <strong>
+            12+
+          </strong>
+
+          <span>
+            Pilihan menu
+          </span>
+
+        </div>
+
+        <div class="side-stat">
+
+          <strong>
+            01
+          </strong>
+
+          <span>
+            Ruang nyaman
+          </span>
+
+        </div>
+
+        <div class="side-stat">
+
+          <strong>
+            08.00
+          </strong>
+
+          <span>
+            Mulai buka
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MENU
+  ========================= -->
+
+  <section class="menu">
+
+    <div class="container">
+
+      <div class="menu-top">
+
+        <div>
+
+          <div class="section-label">
+            02 — Menu
+          </div>
+
+          <h2>
+            Favorit hari ini.
+          </h2>
+
+        </div>
+
+
+        <p>
+
+          Menu sederhana yang dibuat
+          untuk menemani pagi, siang,
+          sampai sore.
+
+        </p>
+
+      </div>
+
+
+      <div class="menu-grid">
+
+
+        <div class="menu-card">
+
+          <div class="card-icon">
+
+            <svg viewBox="0 0 24 24">
+
+              <path
+                d="M7 8h10v7a5 5 0 0 1-10 0z"
+              />
+
+              <path
+                d="M17 10h1a2 2 0 0 1 0 4h-1"
+              />
+
+              <path
+                d="M9 5c0 1 2 1 2 3"
+              />
+
+              <path
+                d="M13 5c0 1 2 1 2 3"
+              />
+
+            </svg>
+
+          </div>
+
+          <h3>
+            Senja Latte
+          </h3>
+
+          <p>
+            Espresso, susu, dan sentuhan caramel.
+          </p>
+
+          <div class="price">
+            28K
+          </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+          <div class="card-icon">
+
+            <svg viewBox="0 0 24 24">
+
+              <path
+                d="M6 8h12v7a6 6 0 0 1-12 0z"
+              />
+
+              <path
+                d="M8 5c0 1.5 2 1.5 2 3"
+              />
+
+              <path
+                d="M13 5c0 1.5 2 1.5 2 3"
+              />
+
+            </svg>
+
+          </div>
+
+          <h3>
+            Black Senja
+          </h3>
+
+          <p>
+            Single origin dengan karakter
+            fruity yang ringan.
+          </p>
+
+          <div class="price">
+            24K
+          </div>
+
+        </div>
+
+
+        <div class="menu-card">
+
+          <div class="card-icon">
+
+            <svg viewBox="0 0 24 24">
+
+              <path
+                d="M7 7h10v11H7z"
+              />
+
+              <path
+                d="M9 4h6"
+              />
+
+              <path
+                d="M10 11h4"
+              />
+
+            </svg>
+
+          </div>
+
+          <h3>
+            Chocolate Cloud
+          </h3>
+
+          <p>
+            Cokelat creamy dengan
+            foam lembut.
+          </p>
+
+          <div class="price">
+            27K
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SUASANA
+  ========================= -->
+
+  <section class="space">
+
+    <div class="container">
+
+      <div class="space-head">
+
+        <div>
+
+          <div class="section-label">
+            03 — Suasana
+          </div>
+
+          <h2>
+
+            Datang untuk kopi.
+
+            <br>
+
+            Tinggal untuk suasana.
+
+          </h2>
+
+        </div>
+
+
+        <p>
+
+          Sudut hangat untuk bekerja,
+          membaca, bertemu teman,
+          atau menikmati waktu sendiri.
+
+        </p>
+
+      </div>
+
+
+      <div class="space-layout">
+
+
+        <div class="space-main">
+
+          <div class="table"></div>
+
+
+          <div class="space-copy">
+
+            <small>
+              Ruang utama
+            </small>
+
+            <h3>
+              Pelan-pelan saja.
+            </h3>
+
+            <p>
+
+              Interior hangat, musik yang tenang,
+              dan meja yang cukup nyaman untuk
+              membuat satu cangkir kopi terasa
+              lebih panjang.
+
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="space-side">
+
+
+          <div class="side-card">
+
+            <div class="num">
+              01 — COFFEE
+            </div>
+
+            <h3>
+              Biji pilihan, dipanggang dengan teliti.
+            </h3>
+
+            <p>
+              Menjaga karakter rasa tetap terasa
+              di setiap seduhan.
+            </p>
+
+          </div>
+
+
+          <div class="side-card">
+
+            <div class="num">
+              02 — SPACE
+            </div>
+
+            <h3>
+              Sudut yang terasa seperti rumah.
+            </h3>
+
+            <p>
+              Nyaman untuk ngobrol, membaca,
+              atau menyelesaikan pekerjaan.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       QUOTE
+  ========================= -->
+
+  <section class="quote">
+
+    <div class="container">
+
+      <div class="quote-line"></div>
+
+      <h2>
+
+        “Kadang yang kita butuhkan
+        hanya kopi hangat dan sedikit waktu.”
+
+      </h2>
+
+      <p>
+        Kopi Senja — Coffee & Slow Living
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CTA
+  ========================= -->
+
+  <section class="cta-section">
+
+    <div class="container">
+
+      <div class="cta">
+
+        <div>
+
+          <div class="cta-label">
+            Datang dan nikmati
+          </div>
+
+          <h2>
+            Temukan sore favoritmu di Kopi Senja.
+          </h2>
+
+          <p>
+            Website ini merupakan konsep desain
+            untuk portofolio PixelBantu.
+          </p>
+
+        </div>
+
+
+        <!-- TIDAK AKTIF -->
+
+        <div class="cta-button">
+          Lihat Lokasi →
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+
+          Kopi Senja
+
+          <span>
+            Coffee & Slow Living
+          </span>
+
+        </div>
+
+
+        <!-- AKTIF: KEMBALI KE PIXELBANTU -->
+
+        <a
+          href="../index.html"
+          class="footer-back"
+        >
+          ← Kembali ke PixelBantu
+        </a>
+
+      </div>
+
+
+      <div class="footer-copy">
+
+        © 2026 Kopi Senja —
+        Website Concept / Demo Portfolio
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       PAGE TRANSITION
+  ========================= -->
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        /*
+          ANIMASI SAAT KOPI SENJA DIBUKA
+        */
+
+        requestAnimationFrame(() => {
+
+          document.body.classList.add(
+            "page-loaded"
+          );
+
+        });
+
+
+        /*
+          TRANSISI SAAT KEMBALI
+          KE PIXELBANTU
+        */
+
+        document
+          .querySelectorAll("a")
+          .forEach(link => {
+
+            const href =
+              link.getAttribute("href");
+
+            if (!href) return;
+
+
+            /*
+              Hanya link lokal yang
+              menggunakan animasi.
+            */
+
+            if (
+              href.startsWith("#") ||
+              href.startsWith("mailto:") ||
+              href.startsWith("tel:") ||
+              href.startsWith("http")
+            ) {
+              return;
+            }
+
+
+            link.addEventListener(
+              "click",
+              function(e) {
+
+                e.preventDefault();
+
+
+                const destination =
+                  this.href;
+
+
+                document.body.classList.remove(
+                  "page-loaded"
+                );
+
+
+                document.body.classList.add(
+                  "page-exit"
+                );
+
+
+                setTimeout(() => {
+
+                  window.location.href =
+                    destination;
+
+                }, 450);
+
+              }
+            );
+
+          });
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
