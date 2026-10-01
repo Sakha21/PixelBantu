@@ -8,7 +8,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
 
@@ -16,12 +20,16 @@
       --navy: #172554;
       --blue: #3b82f6;
       --yellow: #facc15;
+
       --white: #ffffff;
       --light: #f8fafc;
+
       --text: #172033;
       --muted: #64748b;
+
       --border: #e2e8f0;
     }
+
 
     * {
       margin: 0;
@@ -29,23 +37,34 @@
       box-sizing: border-box;
     }
 
+
     html {
       scroll-behavior: smooth;
     }
 
+
     body {
       font-family: "Inter", sans-serif;
+
       background: var(--white);
+
       color: var(--text);
     }
 
+
     a {
-      text-decoration: none;
       color: inherit;
+
+      text-decoration: none;
     }
 
+
     .container {
-      width: min(1160px, calc(100% - 40px));
+      width: min(
+        1160px,
+        calc(100% - 40px)
+      );
+
       margin: auto;
     }
 
@@ -56,89 +75,130 @@
 
     .navbar {
       position: sticky;
+
       top: 0;
+
       z-index: 1000;
 
       height: 76px;
 
-      background: rgba(255,255,255,.94);
+      background:
+        rgba(255,255,255,.94);
+
       backdrop-filter: blur(15px);
 
-      border-bottom: 1px solid var(--border);
+      border-bottom:
+        1px solid var(--border);
     }
+
 
     .nav-inner {
       height: 100%;
 
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
     }
 
+
     .logo {
       display: flex;
+
       align-items: center;
+
       gap: 10px;
 
-      font-family: "Poppins", sans-serif;
+      font-family:
+        "Poppins",
+        sans-serif;
+
       font-size: 20px;
+
       font-weight: 800;
+
       color: var(--navy);
     }
+
 
     .logo-mark {
       width: 38px;
       height: 38px;
 
       display: grid;
+
       place-items: center;
 
-      background: var(--navy);
+      background:
+        var(--navy);
+
       border-radius: 10px;
     }
+
 
     .logo-mark svg {
       width: 22px;
       height: 22px;
 
       fill: none;
+
       stroke: white;
+
       stroke-width: 2;
+
       stroke-linecap: round;
+
       stroke-linejoin: round;
     }
 
+
     .nav-links {
       display: flex;
+
       align-items: center;
+
       gap: 28px;
 
       font-size: 13px;
+
       font-weight: 600;
+
       color: #475569;
     }
+
 
     .nav-links a {
       transition: .2s;
     }
 
+
     .nav-links a:hover {
       color: var(--blue);
     }
 
+
     .nav-button {
-      background: var(--navy);
+      background:
+        var(--navy);
+
       color: white !important;
 
-      padding: 11px 17px;
+      padding:
+        11px 17px;
+
       border-radius: 8px;
 
       transition: .2s;
     }
 
+
     .nav-button:hover {
-      background: var(--blue);
-      transform: translateY(-2px);
+      background:
+        var(--blue);
+
+      transform:
+        translateY(-2px);
     }
 
 
@@ -147,7 +207,8 @@
     ========================= */
 
     .hero {
-      padding: 100px 0 90px;
+      padding:
+        100px 0 90px;
 
       background:
         radial-gradient(
@@ -155,33 +216,50 @@
           rgba(59,130,246,.12),
           transparent 30%
         ),
+
         var(--light);
     }
 
+
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+
+      grid-template-columns:
+        1.05fr .95fr;
+
       gap: 70px;
+
       align-items: center;
     }
+
 
     .badge {
       display: inline-flex;
+
       align-items: center;
+
       gap: 8px;
 
-      padding: 7px 11px;
+      padding:
+        7px 11px;
 
-      background: #eff6ff;
-      border: 1px solid #dbeafe;
+      background:
+        #eff6ff;
 
-      border-radius: 999px;
+      border:
+        1px solid #dbeafe;
 
-      color: #2563eb;
+      border-radius:
+        999px;
+
+      color:
+        #2563eb;
 
       font-size: 11px;
+
       font-weight: 700;
     }
+
 
     .badge-dot {
       width: 7px;
@@ -189,31 +267,41 @@
 
       border-radius: 50%;
 
-      background: var(--blue);
+      background:
+        var(--blue);
     }
 
-    .hero h1 {
-      font-family: "Poppins", sans-serif;
 
-      font-size: clamp(45px, 6vw, 72px);
+    .hero h1 {
+      font-family:
+        "Poppins",
+        sans-serif;
+
+      font-size:
+        clamp(45px, 6vw, 72px);
 
       line-height: 1.03;
 
       letter-spacing: -3px;
 
-      color: var(--navy);
+      color:
+        var(--navy);
 
       margin-top: 22px;
     }
 
+
     .hero h1 span {
-      color: var(--blue);
+      color:
+        var(--blue);
     }
+
 
     .hero-description {
       max-width: 570px;
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
       font-size: 15px;
 
@@ -222,23 +310,31 @@
       margin-top: 25px;
     }
 
+
     .hero-buttons {
       display: flex;
+
       gap: 12px;
 
       margin-top: 32px;
     }
 
+
     .button-primary {
       display: inline-flex;
+
       align-items: center;
+
       gap: 9px;
 
-      padding: 14px 20px;
+      padding:
+        14px 20px;
 
-      background: var(--blue);
+      background:
+        var(--blue);
 
-      color: white;
+      color:
+        white;
 
       border-radius: 9px;
 
@@ -249,20 +345,29 @@
       transition: .2s;
     }
 
+
     .button-primary:hover {
-      background: var(--navy);
-      transform: translateY(-2px);
+      background:
+        var(--navy);
+
+      transform:
+        translateY(-2px);
     }
+
 
     .button-secondary {
       display: inline-flex;
+
       align-items: center;
 
-      padding: 14px 20px;
+      padding:
+        14px 20px;
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
 
-      background: white;
+      background:
+        white;
 
       border-radius: 9px;
 
@@ -270,57 +375,76 @@
 
       font-weight: 700;
 
-      color: var(--navy);
+      color:
+        var(--navy);
 
       transition: .2s;
     }
 
+
     .button-secondary:hover {
-      border-color: var(--blue);
-      color: var(--blue);
+      border-color:
+        var(--blue);
+
+      color:
+        var(--blue);
     }
 
 
     /* =========================
-       HERO MOCKUP
+       BROWSER MOCKUP
     ========================= */
 
     .browser {
-      background: white;
+      background:
+        white;
 
-      border-radius: 18px;
+      border-radius:
+        18px;
 
-      overflow: hidden;
+      overflow:
+        hidden;
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
 
       box-shadow:
-        0 30px 70px rgba(23,37,84,.15);
+        0 30px 70px
+        rgba(23,37,84,.15);
     }
+
 
     .browser-top {
       height: 40px;
 
       display: flex;
+
       align-items: center;
 
       gap: 6px;
 
-      padding: 0 14px;
+      padding:
+        0 14px;
 
-      background: #f1f5f9;
+      background:
+        #f1f5f9;
 
-      border-bottom: 1px solid var(--border);
+      border-bottom:
+        1px solid var(--border);
     }
+
 
     .browser-dot {
       width: 8px;
       height: 8px;
 
-      border-radius: 50%;
+      border-radius:
+        50%;
 
-      background: #cbd5e1;
+      background:
+        #cbd5e1;
     }
+
 
     .browser-address {
       flex: 1;
@@ -331,15 +455,20 @@
 
       border-radius: 5px;
 
-      background: white;
+      background:
+        white;
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
     }
 
-    .browser-content {
-      padding: 28px;
 
-      min-height: 390px;
+    .browser-content {
+      padding:
+        28px;
+
+      min-height:
+        390px;
 
       background:
         linear-gradient(
@@ -349,14 +478,18 @@
         );
     }
 
+
     .mock-nav {
       height: 20px;
 
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
 
       align-items: center;
     }
+
 
     .mock-logo {
       width: 85px;
@@ -364,13 +497,17 @@
 
       border-radius: 4px;
 
-      background: var(--navy);
+      background:
+        var(--navy);
     }
+
 
     .mock-links {
       display: flex;
+
       gap: 7px;
     }
+
 
     .mock-links span {
       width: 30px;
@@ -378,12 +515,16 @@
 
       border-radius: 3px;
 
-      background: #cbd5e1;
+      background:
+        #cbd5e1;
     }
 
+
     .mock-hero {
-      margin-top: 65px;
+      margin-top:
+        65px;
     }
+
 
     .mock-title {
       width: 78%;
@@ -391,14 +532,20 @@
 
       border-radius: 5px;
 
-      background: var(--navy);
+      background:
+        var(--navy);
     }
+
 
     .mock-title.small {
       width: 52%;
+
       margin-top: 9px;
-      background: var(--blue);
+
+      background:
+        var(--blue);
     }
+
 
     .mock-text {
       width: 65%;
@@ -408,8 +555,10 @@
 
       border-radius: 5px;
 
-      background: #cbd5e1;
+      background:
+        #cbd5e1;
     }
+
 
     .mock-button {
       width: 100px;
@@ -419,78 +568,113 @@
 
       border-radius: 6px;
 
-      background: var(--yellow);
+      background:
+        var(--yellow);
     }
+
 
     .mock-cards {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+
+      grid-template-columns:
+        repeat(3,1fr);
 
       gap: 10px;
 
       margin-top: 50px;
     }
 
+
     .mock-card {
       height: 85px;
 
       border-radius: 9px;
 
-      background: white;
+      background:
+        white;
 
-      border: 1px solid #e2e8f0;
+      border:
+        1px solid #e2e8f0;
     }
 
 
     /* =========================
-       SERVICES
+       GENERAL SECTION
     ========================= */
 
     .section {
-      padding: 100px 0;
+      padding:
+        100px 0;
     }
+
 
     .section-heading {
-      max-width: 650px;
+      max-width:
+        650px;
 
-      margin-bottom: 50px;
+      margin-bottom:
+        50px;
     }
+
 
     .section-label {
-      color: var(--blue);
+      color:
+        var(--blue);
 
-      font-size: 11px;
+      font-size:
+        11px;
 
-      font-weight: 800;
+      font-weight:
+        800;
 
-      letter-spacing: 1.5px;
+      letter-spacing:
+        1.5px;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
     }
+
 
     .section-heading h2 {
-      font-family: "Poppins", sans-serif;
+      font-family:
+        "Poppins",
+        sans-serif;
 
-      color: var(--navy);
+      color:
+        var(--navy);
 
-      font-size: 40px;
+      font-size:
+        40px;
 
-      line-height: 1.15;
+      line-height:
+        1.15;
 
-      letter-spacing: -1.5px;
+      letter-spacing:
+        -1.5px;
 
-      margin-top: 10px;
+      margin-top:
+        10px;
     }
+
 
     .section-heading p {
-      color: var(--muted);
+      color:
+        var(--muted);
 
-      font-size: 14px;
+      font-size:
+        14px;
 
-      line-height: 1.8;
+      line-height:
+        1.8;
 
-      margin-top: 14px;
+      margin-top:
+        14px;
     }
+
+
+    /* =========================
+       JASA
+    ========================= */
 
     .services-grid {
       display: grid;
@@ -498,41 +682,57 @@
       grid-template-columns:
         repeat(3,1fr);
 
-      gap: 18px;
+      gap:
+        18px;
     }
+
 
     .service-card {
-      padding: 28px;
+      padding:
+        28px;
 
-      border: 1px solid var(--border);
+      border:
+        1px solid var(--border);
 
-      border-radius: 15px;
+      border-radius:
+        15px;
 
-      background: white;
+      background:
+        white;
 
-      transition: .25s;
+      transition:
+        .25s;
     }
+
 
     .service-card:hover {
-      transform: translateY(-5px);
+      transform:
+        translateY(-5px);
 
-      border-color: #bfdbfe;
+      border-color:
+        #bfdbfe;
 
       box-shadow:
-        0 15px 40px rgba(23,37,84,.08);
+        0 15px 40px
+        rgba(23,37,84,.08);
     }
+
 
     .service-icon {
       width: 48px;
       height: 48px;
 
       display: grid;
+
       place-items: center;
 
-      border-radius: 10px;
+      border-radius:
+        10px;
 
-      background: #eff6ff;
+      background:
+        #eff6ff;
     }
+
 
     .service-icon svg {
       width: 24px;
@@ -540,53 +740,75 @@
 
       fill: none;
 
-      stroke: var(--blue);
+      stroke:
+        var(--blue);
 
-      stroke-width: 1.8;
+      stroke-width:
+        1.8;
 
-      stroke-linecap: round;
+      stroke-linecap:
+        round;
 
-      stroke-linejoin: round;
+      stroke-linejoin:
+        round;
     }
+
 
     .service-card h3 {
-      font-family: "Poppins", sans-serif;
+      font-family:
+        "Poppins",
+        sans-serif;
 
-      color: var(--navy);
+      color:
+        var(--navy);
 
-      font-size: 19px;
+      font-size:
+        19px;
 
-      margin-top: 22px;
+      margin-top:
+        22px;
     }
 
+
     .service-card p {
-      color: var(--muted);
+      color:
+        var(--muted);
 
-      font-size: 12px;
+      font-size:
+        12px;
 
-      line-height: 1.7;
+      line-height:
+        1.7;
 
-      margin-top: 9px;
+      margin-top:
+        9px;
     }
 
 
     /* =========================
-       WHY
+       WHY PIXELBANTU
     ========================= */
 
     .why {
-      background: var(--navy);
+      background:
+        var(--navy);
 
-      color: white;
+      color:
+        white;
     }
+
 
     .why .section-heading h2 {
-      color: white;
+      color:
+        white;
     }
 
+
     .why .section-heading p {
-      color: #aab8d6;
+      color:
+        #aab8d6;
     }
+
 
     .why-grid {
       display: grid;
@@ -594,45 +816,64 @@
       grid-template-columns:
         repeat(4,1fr);
 
-      gap: 15px;
+      gap:
+        15px;
     }
 
-    .why-card {
-      padding: 25px;
 
-      min-height: 190px;
+    .why-card {
+      padding:
+        25px;
+
+      min-height:
+        190px;
 
       border:
-        1px solid rgba(255,255,255,.1);
+        1px solid
+        rgba(255,255,255,.1);
 
-      border-radius: 14px;
+      border-radius:
+        14px;
 
       background:
         rgba(255,255,255,.05);
     }
 
+
     .why-number {
-      font-family: "Poppins", sans-serif;
+      font-family:
+        "Poppins",
+        sans-serif;
 
-      color: var(--yellow);
+      color:
+        var(--yellow);
 
-      font-size: 25px;
+      font-size:
+        25px;
     }
+
 
     .why-card h3 {
-      font-size: 15px;
+      font-size:
+        15px;
 
-      margin-top: 25px;
+      margin-top:
+        25px;
     }
 
+
     .why-card p {
-      color: #aab8d6;
+      color:
+        #aab8d6;
 
-      font-size: 11px;
+      font-size:
+        11px;
 
-      line-height: 1.7;
+      line-height:
+        1.7;
 
-      margin-top: 7px;
+      margin-top:
+        7px;
     }
 
 
@@ -646,46 +887,66 @@
       grid-template-columns:
         repeat(3,1fr);
 
-      gap: 18px;
+      gap:
+        18px;
     }
 
+
     .portfolio-card {
-      overflow: hidden;
+      overflow:
+        hidden;
 
       border:
         1px solid var(--border);
 
-      border-radius: 15px;
+      border-radius:
+        15px;
 
-      background: white;
+      background:
+        white;
 
-      transition: .25s;
+      transition:
+        .25s;
     }
+
 
     .portfolio-card:hover {
-      transform: translateY(-6px);
+      transform:
+        translateY(-6px);
 
       box-shadow:
-        0 20px 45px rgba(23,37,84,.1);
+        0 20px 45px
+        rgba(23,37,84,.1);
     }
+
 
     .portfolio-image {
-      height: 220px;
+      height:
+        220px;
 
-      padding: 20px;
+      padding:
+        20px;
 
-      display: flex;
+      display:
+        flex;
 
-      align-items: end;
+      align-items:
+        end;
 
-      font-family: "Poppins", sans-serif;
+      font-family:
+        "Poppins",
+        sans-serif;
 
-      font-size: 27px;
+      font-size:
+        27px;
 
-      font-weight: 800;
+      font-weight:
+        800;
 
-      color: white;
+      color:
+        white;
     }
+
 
     .nalarin {
       background:
@@ -696,6 +957,7 @@
         );
     }
 
+
     .kopi {
       background:
         linear-gradient(
@@ -704,6 +966,7 @@
           #b97845
         );
     }
+
 
     .urban {
       background:
@@ -714,211 +977,359 @@
         );
     }
 
+
     .portfolio-body {
-      padding: 22px;
+      padding:
+        22px;
     }
+
 
     .portfolio-body h3 {
-      font-family: "Poppins", sans-serif;
+      font-family:
+        "Poppins",
+        sans-serif;
 
-      color: var(--navy);
+      color:
+        var(--navy);
 
-      font-size: 18px;
+      font-size:
+        18px;
     }
+
 
     .portfolio-body p {
-      color: var(--muted);
+      color:
+        var(--muted);
 
-      font-size: 12px;
+      font-size:
+        12px;
 
-      line-height: 1.6;
+      line-height:
+        1.6;
 
-      margin-top: 6px;
+      margin-top:
+        6px;
     }
 
+
     .portfolio-tag {
-      display: inline-block;
+      display:
+        inline-block;
 
-      margin-top: 15px;
+      margin-top:
+        15px;
 
-      padding: 6px 9px;
+      padding:
+        6px 9px;
 
-      background: #f1f5f9;
+      background:
+        #f1f5f9;
 
-      border-radius: 5px;
+      border-radius:
+        5px;
 
-      color: #475569;
+      color:
+        #475569;
 
-      font-size: 9px;
+      font-size:
+        9px;
 
-      font-weight: 700;
+      font-weight:
+        700;
     }
 
 
     /* =========================
-       PROCESS
+       CARA KERJA
     ========================= */
 
     .process {
-      background: var(--light);
+      background:
+        var(--light);
     }
 
+
     .process-grid {
-      display: grid;
+      display:
+        grid;
 
       grid-template-columns:
         repeat(4,1fr);
 
-      gap: 15px;
+      gap:
+        15px;
     }
+
 
     .process-card {
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 14px;
-
-      padding: 25px;
-    }
-
-    .process-number {
-      width: 34px;
-      height: 34px;
-
-      display: grid;
-      place-items: center;
-
-      border-radius: 8px;
-
-      background: var(--navy);
-
-      color: white;
-
-      font-size: 12px;
-
-      font-weight: 800;
-    }
-
-    .process-card h3 {
-      color: var(--navy);
-
-      font-size: 15px;
-
-      margin-top: 20px;
-    }
-
-    .process-card p {
-      color: var(--muted);
-
-      font-size: 11px;
-
-      line-height: 1.7;
-
-      margin-top: 7px;
-    }
-
-
-    /* =========================
-       PRICE
-    ========================= */
-
-    .price-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap: 18px;
-    }
-
-    .price-card {
-      padding: 30px;
+      background:
+        white;
 
       border:
         1px solid var(--border);
 
-      border-radius: 15px;
+      border-radius:
+        14px;
 
-      background: white;
+      padding:
+        25px;
     }
 
-    .price-card.featured {
+
+    .process-number {
+      width:
+        34px;
+
+      height:
+        34px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      border-radius:
+        8px;
+
+      background:
+        var(--navy);
+
+      color:
+        white;
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+    }
+
+
+    .process-card h3 {
+      color:
+        var(--navy);
+
+      font-size:
+        15px;
+
+      margin-top:
+        20px;
+    }
+
+
+    .process-card p {
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+
+      line-height:
+        1.7;
+
+      margin-top:
+        7px;
+    }
+
+
+    /* =========================
+       HARGA FLEKSIBEL
+    ========================= */
+
+    .flexible-price {
+      display:
+        grid;
+
+      grid-template-columns:
+        100px 1fr;
+
+      gap:
+        35px;
+
+      padding:
+        45px;
+
+      background:
+        var(--light);
+
       border:
-        2px solid var(--blue);
+        1px solid var(--border);
 
-      position: relative;
+      border-radius:
+        18px;
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
     }
 
-    .popular {
-      position: absolute;
 
-      top: 15px;
-      right: 15px;
+    .flexible-price::after {
+      content:
+        "";
 
-      padding: 5px 8px;
+      position:
+        absolute;
 
-      border-radius: 5px;
+      width:
+        220px;
 
-      background: var(--yellow);
+      height:
+        220px;
 
-      color: var(--navy);
+      border-radius:
+        50%;
 
-      font-size: 8px;
+      border:
+        1px solid #dbeafe;
 
-      font-weight: 800;
+      right:
+        -80px;
+
+      bottom:
+        -100px;
+
+      pointer-events:
+        none;
     }
 
-    .price-card h3 {
-      font-family: "Poppins", sans-serif;
 
-      color: var(--navy);
+    .flexible-icon {
+      width:
+        70px;
 
-      font-size: 19px;
+      height:
+        70px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      background:
+        var(--navy);
+
+      border-radius:
+        15px;
     }
 
-    .price {
-      font-family: "Poppins", sans-serif;
 
-      color: var(--blue);
+    .flexible-icon svg {
+      width:
+        32px;
 
-      font-size: 32px;
+      height:
+        32px;
 
-      margin-top: 18px;
+      fill:
+        none;
+
+      stroke:
+        var(--yellow);
+
+      stroke-width:
+        1.6;
+
+      stroke-linecap:
+        round;
+
+      stroke-linejoin:
+        round;
     }
 
-    .price span {
-      color: var(--muted);
 
-      font-family: "Inter";
-
-      font-size: 11px;
+    .flexible-content {
+      max-width:
+        760px;
     }
 
-    .price-list {
-      margin-top: 22px;
 
-      display: grid;
+    .flexible-content h3 {
+      font-family:
+        "Poppins",
+        sans-serif;
 
-      gap: 11px;
+      color:
+        var(--navy);
 
-      list-style: none;
+      font-size:
+        21px;
     }
 
-    .price-list li {
-      color: var(--muted);
 
-      font-size: 11px;
+    .flexible-content p {
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+
+      line-height:
+        1.8;
+
+      margin-top:
+        8px;
     }
 
-    .price-list li::before {
-      content: "✓";
 
-      color: #16a34a;
+    .flexible-divider {
+      height:
+        1px;
 
-      font-weight: 800;
+      background:
+        var(--border);
 
-      margin-right: 7px;
+      margin:
+        28px 0;
+    }
+
+
+    .flexible-note {
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      gap:
+        4px;
+
+      margin-top:
+        28px;
+
+      padding:
+        18px 20px;
+
+      background:
+        white;
+
+      border-left:
+        4px solid var(--blue);
+
+      border-radius:
+        7px;
+    }
+
+
+    .flexible-note strong {
+      color:
+        var(--navy);
+
+      font-size:
+        13px;
+    }
+
+
+    .flexible-note span {
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
     }
 
 
@@ -927,92 +1338,139 @@
     ========================= */
 
     .cta {
-      padding: 90px 0;
+      padding:
+        90px 0;
     }
+
 
     .cta-box {
-      background: var(--blue);
+      background:
+        var(--blue);
 
-      border-radius: 20px;
+      border-radius:
+        20px;
 
-      padding: 65px;
+      padding:
+        65px;
 
-      text-align: center;
+      text-align:
+        center;
 
-      color: white;
+      color:
+        white;
 
-      position: relative;
+      position:
+        relative;
 
-      overflow: hidden;
+      overflow:
+        hidden;
     }
+
 
     .cta-box::before {
-      content: "";
+      content:
+        "";
 
-      position: absolute;
+      position:
+        absolute;
 
-      width: 300px;
-      height: 300px;
+      width:
+        300px;
 
-      border-radius: 50%;
+      height:
+        300px;
+
+      border-radius:
+        50%;
 
       border:
-        1px solid rgba(255,255,255,.15);
+        1px solid
+        rgba(255,255,255,.15);
 
-      right: -80px;
-      top: -130px;
+      right:
+        -80px;
+
+      top:
+        -130px;
     }
+
 
     .cta-box h2 {
-      position: relative;
+      position:
+        relative;
 
-      font-family: "Poppins", sans-serif;
+      font-family:
+        "Poppins",
+        sans-serif;
 
-      font-size: 40px;
+      font-size:
+        40px;
 
-      line-height: 1.15;
+      line-height:
+        1.15;
     }
+
 
     .cta-box p {
-      position: relative;
+      position:
+        relative;
 
-      color: #dbeafe;
+      color:
+        #dbeafe;
 
-      font-size: 13px;
+      font-size:
+        13px;
 
-      margin-top: 12px;
+      margin-top:
+        12px;
     }
+
 
     .cta-whatsapp {
-      position: relative;
+      position:
+        relative;
 
-      display: inline-flex;
+      display:
+        inline-flex;
 
-      align-items: center;
+      align-items:
+        center;
 
-      gap: 8px;
+      gap:
+        8px;
 
-      margin-top: 27px;
+      margin-top:
+        27px;
 
-      padding: 14px 21px;
+      padding:
+        14px 21px;
 
-      background: white;
+      background:
+        white;
 
-      color: var(--navy);
+      color:
+        var(--navy);
 
-      border-radius: 9px;
+      border-radius:
+        9px;
 
-      font-size: 12px;
+      font-size:
+        12px;
 
-      font-weight: 800;
+      font-weight:
+        800;
 
-      transition: .2s;
+      transition:
+        .2s;
     }
 
-    .cta-whatsapp:hover {
-      transform: translateY(-3px);
 
-      background: var(--yellow);
+    .cta-whatsapp:hover {
+      transform:
+        translateY(-3px);
+
+      background:
+        var(--yellow);
     }
 
 
@@ -1021,60 +1479,97 @@
     ========================= */
 
     footer {
-      padding: 45px 0;
+      padding:
+        45px 0;
 
-      background: #0f172a;
+      background:
+        #0f172a;
 
-      color: white;
+      color:
+        white;
     }
+
 
     .footer-inner {
-      display: flex;
+      display:
+        flex;
 
-      align-items: center;
+      align-items:
+        center;
 
-      justify-content: space-between;
+      justify-content:
+        space-between;
     }
+
 
     .footer-logo {
-      font-family: "Poppins", sans-serif;
+      font-family:
+        "Poppins",
+        sans-serif;
 
-      font-size: 19px;
+      font-size:
+        19px;
 
-      font-weight: 800;
+      font-weight:
+        800;
     }
+
 
     .footer-logo span {
-      color: var(--blue);
+      color:
+        var(--blue);
     }
+
 
     .footer-text {
-      color: #94a3b8;
+      color:
+        #94a3b8;
 
-      font-size: 10px;
+      font-size:
+        10px;
 
-      margin-top: 5px;
+      margin-top:
+        5px;
     }
+
 
     .footer-wa {
-      color: #bfdbfe;
+      color:
+        #bfdbfe;
 
-      font-size: 11px;
+      font-size:
+        11px;
 
-      font-weight: 700;
+      font-weight:
+        700;
+
+      transition:
+        .2s;
     }
+
+
+    .footer-wa:hover {
+      color:
+        white;
+    }
+
 
     .copyright {
       border-top:
-        1px solid rgba(255,255,255,.08);
+        1px solid
+        rgba(255,255,255,.08);
 
-      margin-top: 30px;
+      margin-top:
+        30px;
 
-      padding-top: 18px;
+      padding-top:
+        18px;
 
-      color: #64748b;
+      color:
+        #64748b;
 
-      font-size: 9px;
+      font-size:
+        9px;
     }
 
 
@@ -1085,15 +1580,17 @@
     @media(max-width:900px) {
 
       .hero-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
 
+
       .services-grid,
-      .portfolio-grid,
-      .price-grid {
+      .portfolio-grid {
         grid-template-columns:
           1fr 1fr;
       }
+
 
       .why-grid,
       .process-grid {
@@ -1111,74 +1608,131 @@
           calc(100% - 30px);
       }
 
+
       .nav-links {
-        display: none;
+        display:
+          none;
       }
+
 
       .hero {
         padding:
           70px 0;
       }
 
-      .hero h1 {
-        font-size: 46px;
 
-        letter-spacing: -2px;
+      .hero h1 {
+        font-size:
+          46px;
+
+        letter-spacing:
+          -2px;
       }
+
 
       .hero-buttons {
-        flex-direction: column;
+        flex-direction:
+          column;
       }
+
 
       .button-primary,
       .button-secondary {
-        justify-content: center;
+        justify-content:
+          center;
       }
+
 
       .browser-content {
-        min-height: 300px;
+        min-height:
+          300px;
 
-        padding: 18px;
+        padding:
+          18px;
       }
+
 
       .mock-hero {
-        margin-top: 45px;
+        margin-top:
+          45px;
       }
+
 
       .services-grid,
       .portfolio-grid,
-      .price-grid,
       .why-grid,
       .process-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
+
 
       .section {
         padding:
           75px 0;
       }
 
+
       .section-heading h2 {
-        font-size: 33px;
+        font-size:
+          33px;
       }
+
+
+      .flexible-price {
+        grid-template-columns:
+          1fr;
+
+        padding:
+          28px;
+
+        gap:
+          22px;
+      }
+
+
+      .flexible-icon {
+        width:
+          58px;
+
+        height:
+          58px;
+      }
+
+
+      .flexible-icon svg {
+        width:
+          26px;
+
+        height:
+          26px;
+      }
+
 
       .cta-box {
         padding:
           45px 25px;
       }
 
+
       .cta-box h2 {
-        font-size: 30px;
+        font-size:
+          30px;
       }
+
 
       .footer-inner {
-        display: block;
+        display:
+          block;
       }
 
-      .footer-wa {
-        display: inline-block;
 
-        margin-top: 20px;
+      .footer-wa {
+        display:
+          inline-block;
+
+        margin-top:
+          20px;
       }
 
     }
@@ -1197,6 +1751,7 @@
   <nav class="navbar">
 
     <div class="container nav-inner">
+
 
       <a href="#" class="logo">
 
@@ -1235,12 +1790,17 @@
           Harga
         </a>
 
-        <!-- GANTI NOMOR DI SINI -->
+
+        <!--
+          GANTI 628xxxxxxxxxx
+          DENGAN NOMOR WHATSAPP LU
+        -->
 
         <a
           href="https://wa.me/628xxxxxxxxxx?text=Halo%20PixelBantu%2C%20saya%20ingin%20konsultasi%20website."
           class="nav-button"
           target="_blank"
+          rel="noopener"
         >
           Konsultasi
         </a>
@@ -1299,11 +1859,15 @@
 
         <div class="hero-buttons">
 
-          <!-- GANTI NOMOR DI SINI -->
+
+          <!--
+            GANTI NOMOR WHATSAPP
+          -->
 
           <a
             href="https://wa.me/628xxxxxxxxxx?text=Halo%20PixelBantu%2C%20saya%20ingin%20konsultasi%20website."
             target="_blank"
+            rel="noopener"
             class="button-primary"
           >
 
@@ -1326,14 +1890,19 @@
       </div>
 
 
-      <!-- BROWSER MOCKUP -->
+      <!-- =========================
+           BROWSER
+      ========================= -->
 
       <div class="browser">
+
 
         <div class="browser-top">
 
           <span class="browser-dot"></span>
+
           <span class="browser-dot"></span>
+
           <span class="browser-dot"></span>
 
           <div class="browser-address"></div>
@@ -1343,6 +1912,7 @@
 
         <div class="browser-content">
 
+
           <div class="mock-nav">
 
             <div class="mock-logo"></div>
@@ -1350,8 +1920,11 @@
             <div class="mock-links">
 
               <span></span>
+
               <span></span>
+
               <span></span>
+
               <span></span>
 
             </div>
@@ -1375,10 +1948,13 @@
           <div class="mock-cards">
 
             <div class="mock-card"></div>
+
             <div class="mock-card"></div>
+
             <div class="mock-card"></div>
 
           </div>
+
 
         </div>
 
@@ -1399,6 +1975,7 @@
   >
 
     <div class="container">
+
 
       <div class="section-heading">
 
@@ -1427,7 +2004,13 @@
 
             <svg viewBox="0 0 24 24">
 
-              <rect x="3" y="4" width="18" height="15" rx="2"/>
+              <rect
+                x="3"
+                y="4"
+                width="18"
+                height="15"
+                rx="2"
+              />
 
               <path d="M3 9H21"/>
 
@@ -1437,9 +2020,11 @@
 
           </div>
 
+
           <h3>
             Website Bisnis
           </h3>
+
 
           <p>
             Website profesional untuk memperkenalkan
@@ -1467,9 +2052,11 @@
 
           </div>
 
+
           <h3>
             Landing Page
           </h3>
+
 
           <p>
             Halaman khusus untuk promosi produk,
@@ -1495,9 +2082,11 @@
 
           </div>
 
+
           <h3>
             Website UMKM
           </h3>
+
 
           <p>
             Website sederhana dan informatif untuk
@@ -1505,6 +2094,7 @@
           </p>
 
         </div>
+
 
       </div>
 
@@ -1520,6 +2110,7 @@
   <section class="section why">
 
     <div class="container">
+
 
       <div class="section-heading">
 
@@ -1632,6 +2223,7 @@
 
     <div class="container">
 
+
       <div class="section-heading">
 
         <div class="section-label">
@@ -1664,6 +2256,7 @@
             Nalarin Academy
           </div>
 
+
           <div class="portfolio-body">
 
             <h3>
@@ -1695,6 +2288,7 @@
             Kopi Senja
           </div>
 
+
           <div class="portfolio-body">
 
             <h3>
@@ -1725,6 +2319,7 @@
           <div class="portfolio-image urban">
             UrbanCut
           </div>
+
 
           <div class="portfolio-body">
 
@@ -1764,6 +2359,7 @@
 
     <div class="container">
 
+
       <div class="section-heading">
 
         <div class="section-label">
@@ -1791,8 +2387,9 @@
           </h3>
 
           <p>
-            Ceritakan kebutuhan dan jenis
-            bisnis yang ingin dibuatkan website.
+            Client menjelaskan kebutuhan,
+            jenis bisnis, dan gambaran
+            website yang diinginkan.
           </p>
 
         </div>
@@ -1805,12 +2402,13 @@
           </div>
 
           <h3>
-            Konsep
+            Tentukan Budget
           </h3>
 
           <p>
-            Menentukan struktur halaman,
-            konten, dan gaya visual.
+            Client dapat menyampaikan
+            kisaran budget yang ingin
+            digunakan untuk website.
           </p>
 
         </div>
@@ -1823,12 +2421,13 @@
           </div>
 
           <h3>
-            Pembuatan
+            Diskusi & Penawaran
           </h3>
 
           <p>
-            Website dibuat dan disesuaikan
-            dengan kebutuhan bisnis.
+            Kebutuhan website dibahas,
+            kemudian harga dapat
+            dinegosiasikan bersama.
           </p>
 
         </div>
@@ -1841,12 +2440,13 @@
           </div>
 
           <h3>
-            Selesai
+            Pembuatan
           </h3>
 
           <p>
-            Website siap digunakan dan
-            dikembangkan lebih lanjut.
+            Setelah harga dan kebutuhan
+            disepakati, website mulai
+            dibuat sesuai konsep.
           </p>
 
         </div>
@@ -1860,7 +2460,7 @@
 
 
   <!-- =========================
-       HARGA
+       HARGA FLEKSIBEL
   ========================= -->
 
   <section
@@ -1870,130 +2470,122 @@
 
     <div class="container">
 
+
       <div class="section-heading">
 
         <div class="section-label">
-          Harga
+          Harga Fleksibel
         </div>
 
         <h2>
-          Pilih paket sesuai kebutuhan.
+          Harga dibicarakan bersama, bukan harga mati.
         </h2>
+
+        <p>
+          Setiap bisnis punya kebutuhan yang berbeda.
+          Karena itu, PixelBantu menggunakan sistem
+          harga yang fleksibel dan dapat didiskusikan.
+        </p>
 
       </div>
 
 
-      <div class="price-grid">
+      <div class="flexible-price">
 
 
-        <div class="price-card">
+        <div class="flexible-icon">
+
+          <svg viewBox="0 0 24 24">
+
+            <path d="M4 7H20"/>
+
+            <path d="M4 12H20"/>
+
+            <path d="M4 17H14"/>
+
+            <circle
+              cx="18"
+              cy="17"
+              r="3"
+            />
+
+          </svg>
+
+        </div>
+
+
+        <div class="flexible-content">
+
 
           <h3>
-            Starter
+            Client menentukan budget
           </h3>
 
-          <div class="price">
-            Rp499K
+
+          <p>
+
+            Client dapat menyampaikan kisaran
+            budget yang ingin digunakan untuk
+            membuat website. Budget tersebut
+            kemudian menjadi bahan pembicaraan
+            untuk menentukan kebutuhan website.
+
+          </p>
+
+
+          <div class="flexible-divider"></div>
+
+
+          <h3>
+            Harga dapat dinegosiasikan
+          </h3>
+
+
+          <p>
+
+            Harga bukan merupakan angka yang
+            harus selalu tetap. Pembuat website
+            dapat memberikan penawaran dan
+            melakukan negosiasi berdasarkan
+            jumlah halaman, fitur, desain,
+            tingkat kesulitan, dan kebutuhan client.
+
+          </p>
+
+
+          <div class="flexible-divider"></div>
+
+
+          <h3>
+            Kesepakatan dibuat bersama
+          </h3>
+
+
+          <p>
+
+            Setelah kebutuhan dan budget dibahas,
+            client dan pembuat website menentukan
+            harga yang disepakati bersama sebelum
+            proses pembuatan dimulai.
+
+          </p>
+
+
+          <div class="flexible-note">
+
+            <strong>
+              Budget + Kebutuhan + Negosiasi
+            </strong>
+
             <span>
-              / mulai
+              Harga akhir ditentukan berdasarkan
+              kesepakatan antara client dan pembuat website.
             </span>
+
           </div>
 
-          <ul class="price-list">
-
-            <li>
-              Landing page
-            </li>
-
-            <li>
-              Responsive
-            </li>
-
-            <li>
-              Tombol WhatsApp
-            </li>
-
-            <li>
-              Desain modern
-            </li>
-
-          </ul>
 
         </div>
-
-
-        <div class="price-card featured">
-
-          <div class="popular">
-            POPULER
-          </div>
-
-          <h3>
-            Business
-          </h3>
-
-          <div class="price">
-            Rp999K
-            <span>
-              / mulai
-            </span>
-          </div>
-
-          <ul class="price-list">
-
-            <li>
-              Website multi-section
-            </li>
-
-            <li>
-              Responsive
-            </li>
-
-            <li>
-              WhatsApp integration
-            </li>
-
-            <li>
-              Desain custom
-            </li>
-
-          </ul>
-
-        </div>
-
-
-        <div class="price-card">
-
-          <h3>
-            Custom
-          </h3>
-
-          <div class="price">
-            Custom
-          </div>
-
-          <ul class="price-list">
-
-            <li>
-              Struktur sesuai kebutuhan
-            </li>
-
-            <li>
-              Fitur tambahan
-            </li>
-
-            <li>
-              Desain custom
-            </li>
-
-            <li>
-              Konsultasi kebutuhan
-            </li>
-
-          </ul>
-
-        </div>
-
 
       </div>
 
@@ -2003,36 +2595,43 @@
 
 
   <!-- =========================
-       CTA WHATSAPP
+       CTA
   ========================= -->
 
   <section class="cta">
 
     <div class="container">
 
+
       <div class="cta-box">
+
 
         <h2>
           Punya ide website?
         </h2>
 
+
         <p>
-          Ceritakan kebutuhan bisnis lu.
-          Kita bahas dulu tanpa ribet.
+          Ceritakan kebutuhan dan budget lu.
+          Kita diskusikan dulu sebelum menentukan harga.
         </p>
 
 
-        <!-- GANTI NOMOR DI SINI -->
+        <!--
+          GANTI NOMOR WHATSAPP
+        -->
 
         <a
           href="https://wa.me/628xxxxxxxxxx?text=Halo%20PixelBantu%2C%20saya%20ingin%20konsultasi%20website."
           target="_blank"
+          rel="noopener"
           class="cta-whatsapp"
         >
 
           Konsultasi via WhatsApp →
 
         </a>
+
 
       </div>
 
@@ -2049,7 +2648,9 @@
 
     <div class="container">
 
+
       <div class="footer-inner">
+
 
         <div>
 
@@ -2058,6 +2659,7 @@
             Pixel<span>Bantu</span>
 
           </div>
+
 
           <div class="footer-text">
 
@@ -2068,17 +2670,21 @@
         </div>
 
 
-        <!-- GANTI NOMOR DI SINI -->
+        <!--
+          GANTI NOMOR WHATSAPP
+        -->
 
         <a
           href="https://wa.me/628xxxxxxxxxx?text=Halo%20PixelBantu%2C%20saya%20ingin%20konsultasi%20website."
           target="_blank"
+          rel="noopener"
           class="footer-wa"
         >
 
           WhatsApp → Konsultasi
 
         </a>
+
 
       </div>
 
@@ -2089,6 +2695,7 @@
         Website Concept & Portfolio.
 
       </div>
+
 
     </div>
 
